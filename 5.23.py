@@ -2,32 +2,31 @@ prompt = "Welcome to Vedant's Pizza Store. Here is a list of our base pizzas and
 prompt += "\n[Cheese pizza, Chicken pizza]"
 prompt += "\n[Onions, Cheese, Chicken, Jalapenos.]"
 prompt2 = "\nWhat is your name?"
-prompt3 = "What is your phone number?"
 prompt += "\nWhich pizza would you like?"
 prompt += "\n(Type 'done' when finished.)"
 pizza = ['Cheese pizza', 'Chicken pizza']
 toppings = ['Onions', 'Cheese', 'Chicken', 'Jalapenos']
 finished_list = []
-Pizza_Price = '5$'
+Pizza_Price = str(5)
 Customer = True
 while Customer:
     Name = input(prompt2)
-    Phone_Number = input(prompt3)
     pizzas = input(prompt)
     finished_list.append("Name: " + Name)
-    finished_list.append("Phone number: " + Phone_Number)
     if pizzas == 'Cheese pizza':
         quantity = True
         while quantity:
             prompt4 = "How many would you like?"
             Amount = input(prompt4)
-            if Amount != "1":
-                finished_list.append(pizzas + " quantity: " + Amount + ", One Pizza Price: " + "5$")
+            if Amount != 1:
+                Amount = int(Amount)
+                Add = (Amount*5)
+                finished_list.append(pizzas + " quantity: " + str(Amount) + ", Pizza Price: " + str(Add) + "$")
                 quantity = False
             else:
-                finished_list.append(pizzas + " is " + Pizza_Price)
+                finished_list.append(pizzas + " is " + Pizza_Price + "$")
                 quantity = False
-        print("One pizza is " + str(Pizza_Price))
+        print("One pizza is " + str(Pizza_Price) + "$")
         question = "Would you like toppings? They cost an additional 1$ each."
         food = input(question)
         if food == 'yes':
@@ -67,16 +66,19 @@ while Customer:
         if food == 'no':
             break
     if pizzas == 'Chicken pizza':
-        while True:
-            prompt = "How many would you like?"
-            if input(prompt) != "1":
-                finished_list.append(pizzas + " quantity: " + input(prompt) + ", One Pizza Price: " + "5$")
-                break
+        quantity = True
+        while quantity:
+            prompt4 = "How many would you like?"
+            Amount = input(prompt4)
+            if Amount != 1:
+                Amount = int(Amount)
+                Add = (Amount * 5)
+                finished_list.append(pizzas + " quantity: " + str(Amount) + ", Pizza Price: " + str(Add) + "$")
+                quantity = False
             else:
-                finished_list.append(pizzas + " is " + Pizza_Price)
-                break
+                quantity = False
         finished_list.append(pizzas + " is " + Pizza_Price)
-        print("Base pizza is " + str(Pizza_Price))
+        print("Base pizza is " + str(Pizza_Price) + "$")
         question = "Would you like toppings? They cost an additional 1$ each."
         food = input(question)
         if food == 'yes':
